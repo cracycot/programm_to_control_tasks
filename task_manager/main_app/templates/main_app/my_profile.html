@@ -1,0 +1,10 @@
+{% extends 'main_app/parent.html'%}
+{% block title %} Мой профиль {% endblock %}
+{% block content %}
+<main class="My_profile">
+    <p >Мой ник: {{ user.username }}</p>
+    <p >Мой email: {{ user.email }}< </p>
+    <p>Мое имя: {{ user.first_name }} </p>
+    <a href="{% url 'logout'%}"><li><i class="fa-solid fa-house"></i>Выйти </li></a>
+</main>
+{% endblock %}

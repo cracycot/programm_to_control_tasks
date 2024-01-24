@@ -1,0 +1,17 @@
+{% extends 'main_app/parent.html'%}
+{% block title %} Мои задачи {% endblock %}
+{% block content %}
+    <div class="image-container">
+        <h1>Мои задачи</h1>
+        {% for el in els %}
+        <div>
+            <h2>{{ el.title}}</h2>
+            {% if el.text%}
+                <p> {{ el.text}} </p>
+                <a href="{% url 'task_info' el.id %}"><li><button class = "btn btn-info"><i class="fas fa-plus-circle"></i>Подробнее</button></li>
+            {% endif %}
+        </div>
+        {% endfor %}
+        <a href="{% url 'add_task' %}"><li><button class = "btn btn-info"><i class="fas fa-plus-circle"></i>Добавить запись</button></li>
+    </div>
+{% endblock %}

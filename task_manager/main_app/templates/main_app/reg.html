@@ -1,0 +1,12 @@
+{% extends 'main_app/parent.html'%}
+{% block title %} Создать аккаунт{% endblock %}
+
+{% block content %}
+    <h1>Создать акакунт </h1>
+    <p>Зарегистрируйтесь используя форму </p>
+    <form action="." method="post">
+        {{ user_form.as_p }}
+        {% csrf_token %}
+        <p><input type="submit" value="Create my account"></p>
+    </form>
+{% endblock %}

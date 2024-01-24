@@ -1,0 +1,49 @@
+.username {
+    color: azure;
+}
+body {
+    background: #2c2c2c;
+}
+aside {
+    float : left;
+    background : #181818;
+    width : 25%;
+    padding : 2.5%;
+    height : 100vh;
+    color : #fff;
+    border-right : 5px solid #4d4d4d;
+}
+.image-container {
+    min-height : 100vh;
+    width : 100%;
+
+    background-color: gainsboro;
+    background-image: url('../img/back.jpg');
+    background-size: cover;
+}
+h1 {
+    color : #FF69B4;
+}
+ul {
+    font-size: 160%;
+}
+aside h3 {
+    font-size: 180%;
+}
+aside ul {
+    list-style: none;
+}
+aside ul li {
+    color: blueviolet;
+    display: block;
+    margin-top: 10%;
+    transition:   transform .6s ease;
+}
+aside ul li:hover, aside ul a:hover {
+    color: darkmagenta;
+    text-decoration: none;
+    transform: scale(1.05);
+}
+div {
+    color: #66CDAA;
+}
