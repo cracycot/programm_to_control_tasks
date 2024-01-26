@@ -1,38 +1,74 @@
 {% load static %}
-<!doctype html>
-<html lang="ru">
+{% load women_tags %}
+<!DOCTYPE html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Главная страница</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{% static 'main_app/css/main_app.css' %}">
-    <script src="https://kit.fontawesome.com/ec3542b367.js" crossorigin="anonymous"></script>
+	<title>{{title}}</title>
+	<link type="text/css" href="{% static 'women/css/styles.css' %}" rel="stylesheet" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<link rel="shortcut icon" href="{% static 'women/images/main.ico' %}" type="image/x-icon"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-    <aside>
-        <span class= "logo"> Логотип </span>
-        <h3> Навигация</h3>
-        <ul>
-            <a href="{% url 'home'%}"><li><i class="fa-solid fa-house"></i> Главная страница</li></a>
-            <a href="{% url 'my_tasks'%}"><li><i class="fa-solid fa-list-check"></i> Мои задачи</li></a>
-            <a href="{% url 'my_profile'%}"><li><i class="fa-solid fa-user"></i> Мой профиль</li></a>
-        </ul>
-    </aside>
-    <main>
-        <div class="image-container">
-            <h1>Мои задачи</h1>
-            {% for el in els %}
-            <div>
-                <h2>{{ el.title}}</h2>
-                {% if el.text%}
-                    <p> {{ el.text}} </p>
-                {% endif %}
-            </div>
-            {% endfor %}
-        </div>
-    </main>
+<table class="table-page" border=0 cellpadding="0" cellspacing="0">
+<tr><td valign=top>
+{% block mainmenu %}
+		<div class="header">
+			<ul id="mainmenu" class="mainmenu">
+			<li class="logo"><a href="{% url 'home' %}"><div class="logo"></div></a></li>
+{% for m in menu %}
+	{% if not forloop.last %}
+			<li><a href="{% url m.url_name %}">{{m.title}}</a></li>
+	{% else %}
+			<li class="last"><a href="{% url m.url_name %}">{{m.title}}</a></li>
+	{% endif %}
+{% endfor %}
+			</ul>
+			<div class="clear"></div>
+		</div>
+{% endblock mainmenu %}
+
+
+<table class="table-content" border=0 cellpadding="0" cellspacing="0">
+<tr>
+<!-- Sidebar слева -->
+	<td valign="top" class="left-chapters">
+	<ul id="leftchapters">
+{% if cat_selected == 0 %}
+		<li class="selected">Все категории</li>
+{% else %}
+		<li><a href="{% url 'home' %}">Все категории</a></li>
+{% endif %}
+
+{% show_categories cat_selected=cat_selected %}
+
+		<li class="share">
+		<p>Наш канал</p>
+		<a class="share-yt" href="https://www.youtube.com/channel/UClJzWfGWuGJL2t-3dYKcHTA/playlists" target="_blank" rel="nofollow"></a>
+		</li>
+	</ul>
+</td>
+<!-- Конец Sidebar'а -->
+<td valign="top" class="content">
+	<!-- Хлебные крошки -->
+	{% block breadcrumbs %}
+	{% endblock %}
+
+<!-- Блок контента -->
+	<div class="content-text">
+{% block content %}
+{% endblock %}
+	</div>
+<!-- Конец блока контента -->
+
+</td></tr></table>
+</td></tr>
+<!-- Footer -->
+<tr><td valign=top>
+	<div id="footer">
+		<p></p>
+	</div>
+</td></tr></table>
+<!-- Конец footer'а и страницы -->
 </body>
 </html>

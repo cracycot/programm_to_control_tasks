@@ -6,11 +6,12 @@
         {% for el in els %}
         <div>
             <h2>{{ el.title}}</h2>
-            {% if el.text%}
-                <p> {{ el.text}} </p>
-                <a href="{% url 'task_info' el.id %}"><li><button class = "btn btn-info"><i class="fas fa-plus-circle"></i>Подробнее</button></li>
-            {% endif %}
+<!--            {% if el.text%}-->
+<!--                <p> {{ el.text}} </p>-->
+<!--            {% endif %}-->
+            <a href="{{el.get_absolute_url}}"><li><button class = "btn btn-info"><i class="fas fa-plus-circle"></i>Подробнее</button></li>
         </div>
+        <br>
         {% endfor %}
         <a href="{% url 'add_task' %}"><li><button class = "btn btn-info"><i class="fas fa-plus-circle"></i>Добавить запись</button></li>
     </div>

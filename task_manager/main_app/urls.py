@@ -13,7 +13,6 @@ urlpatterns = [
      path('registration/', register, name = 'reg'),
      path('login/',login_view, name='login'),
      path('logout/',logout_view, name='logout'),
-
-     path('delete_task/', delete_task, name='delete_task'),
+     path('delete_task/<int:task_id>/', delete_task, name='delete_task'),
      path('task/<int:task_id>/', task_info, name = 'task_info')
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -6,5 +6,5 @@
                 <h1> Дедлайн  {{ task.time_finish }}</h1>
                 <p>{{ task.text }}</p>
         </div>
-        <a href="{% url 'delete_task' %}"><li><i class="fa-solid fa-user"></i> Удалить задачу</li> </a>
+        <a href="{% url 'delete_task' task.id %}"><li><i class="fa-solid fa-user"></i> Удалить задачу</li> </a>
 {% endblock %}

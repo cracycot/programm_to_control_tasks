@@ -27,7 +27,7 @@ class UserRegistrationForm(forms.ModelForm):
 class TaskForm(forms.ModelForm):
     class Meta:
         model = Task
-        fields = ['title', 'date_finish', 'color', 'text']
+        fields = ['title', 'date_finish', 'color', 'text', 'cat']
         widgets = {
             'date_finish': forms.DateInput(attrs={'type': 'date'}),
             'color': forms.NumberInput(attrs={'step': '1','min': '0', 'max': '5'}),

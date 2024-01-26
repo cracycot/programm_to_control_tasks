@@ -3,6 +3,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from .forms import *
+from .models import Category
+
 
 def index(request):
     return HttpResponse("fjdklmsc;,a./x~")
@@ -26,7 +28,7 @@ def add_task(request):
     else:
         #print(2)
         form = TaskForm()
-    return render(request, 'main_app/add_task.html', {'form': form})
+    return render(request, 'main_app/add_task.html', {'form': form, 'categories': Category.objects.all()})
 def task_info(request, task_id):
     task = get_object_or_404(Task, pk=task_id)
     return render(request, 'main_app/task_info.html', context={'task': task})
